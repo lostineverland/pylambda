@@ -18,7 +18,6 @@ AUTHOR = 'Carlos Bonilla'
 # What packages are required for this module to be executed?
 REQUIRED = [
     "toolz==0.8.2",
-    "PyYAML==3.12"
 ]
 
 # The rest you shouldn't have to touch too much :)
