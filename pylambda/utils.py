@@ -54,8 +54,8 @@ def applicative_func(*funcs):
         which either a list or a dict, will be treated as a function with 
         partial arguments
     '''
-    def functor(*args):
-        applicator = lambda f: _apply_partial_if_list_or_dict(f)(*args)
+    def functor(*args, **kwargs):
+        applicator = lambda f: _apply_partial_if_list_or_dict(f)(*args, **kwargs)
         return map(applicator, funcs)
     return functor
 
