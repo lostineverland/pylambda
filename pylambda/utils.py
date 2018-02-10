@@ -34,6 +34,32 @@ def comp(*args):
         )
     return f
 
+def applicative_func(*funcs):
+    '''This function serves as an applicative functor, or a loose 
+        interpretation of an applicative functor. In practice it works
+        like map, with the functions and values inverted. It applies a
+        list of functions to some arguments.
+        Example:
+            add = lambda x, y: x + y
+            subtract = lambda x, y: x - y
+            multiply = lambda x, y: x * y
+            divide = lambda x, y: x / y
+            power = lambda x, y: x ** y
+
+            oper = applicative_func(add, subtract, multiply, divide, power)
+            oper(8, 2)
+
+            >>> [10, 6, 16, 4, 64]
+
+        Much like the composition function, any value in the function list
+        which either a list or a dict, will be treated as a function with 
+        partial arguments
+    '''
+    def functor(*args):
+        applicator = lambda f: f(*args)
+        return map(applicator, _apply_partial_if_list_or_dict(funcs))
+    return functor
+
 def _apply_partial_if_list_or_dict(args):
     if isList(args):
         return functools.partial(*args)
