@@ -34,13 +34,12 @@ def comp(*args):
         )
     return f
 
-def applicative_func(*funcs):
-    '''This function serves as an applicative functor, or a loose 
-        interpretation of an applicative functor. In practice it works
-        like map, with the functions and values inverted. It applies a
-        list of functions to some arguments.
+def juxt(*funcs):
+    '''Function juxtaposition. In practice it works like map, with the 
+    functions and values inverted. It applies a list of functions to 
+    some arguments.
         Example:
-            oper = applicative_func(
+            oper = juxt(
               lambda y: 8 + y,                      # add to 8
               lambda y: 8 - y,                      # subtract from 8
               [lambda x, y: x * y, 8],              # multiply by 8 factor
