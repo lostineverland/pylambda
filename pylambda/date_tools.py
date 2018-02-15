@@ -31,130 +31,23 @@ class fromIsoToIso(object):
     """a set of functions which take an ISO_8601 time string
     and return an ISO_8601 time string
     """
-
     @staticmethod
-    def subtract_microseconds(microseconds, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
+    def add(value, iso_dt, unit=None, granularity=None):
+        unit = unit or granularity_by_len[len(iso_dt)].lower()
+        granularity = granularity or granularity_by_len[len(iso_dt)].lower()
         return comp(
             fromIsoToDt.to_dt,
-            [fromDtToDt.subtract_microseconds, microseconds],
+            [getattr(fromDtToDt, 'add_{}'.format(unit)), value],
             getattr(fromDtToIso, 'to_{}'.format(granularity))
         )(iso_dt)
 
     @staticmethod
-    def subtract_seconds(seconds, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
+    def subtract(value, iso_dt, unit=None, granularity=None):
+        unit = unit or granularity_by_len[len(iso_dt)].lower()
+        granularity = granularity or granularity_by_len[len(iso_dt)].lower()
         return comp(
             fromIsoToDt.to_dt,
-            [fromDtToDt.subtract_seconds, seconds],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def subtract_minutes(minutes, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.subtract_minutes, minutes],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def subtract_hours(hours, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.subtract_hours, hours],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def subtract_days(days, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.subtract_days, days],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def subtract_months(months, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.subtract_months, months],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def subtract_years(years, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.subtract_years, years],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def add_microseconds(microseconds, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.add_microseconds, microseconds],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def add_seconds(seconds, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.add_seconds, seconds],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def add_minutes(minutes, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.add_minutes, minutes],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def add_hours(hours, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.add_hours, hours],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def add_days(days, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.add_days, days],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def add_months(months, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.add_months, months],
-            getattr(fromDtToIso, 'to_{}'.format(granularity))
-        )(iso_dt)
-
-    @staticmethod
-    def add_years(years, iso_dt):
-        granularity = granularity_by_len[len(iso_dt)].lower()
-        return comp(
-            fromIsoToDt.to_dt,
-            [fromDtToDt.add_years, years],
+            [getattr(fromDtToDt, 'subtract_{}'.format(unit)), value],
             getattr(fromDtToIso, 'to_{}'.format(granularity))
         )(iso_dt)
 
