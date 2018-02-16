@@ -18,7 +18,7 @@ AUTHOR = 'Carlos Bonilla'
 # What packages are required for this module to be executed?
 REQUIRED = [
     "toolz==0.8.2",
-    "dateutil==2.6.1",
+    "python-dateutil==2.6.1",
 ]
 
 # The rest you shouldn't have to touch too much :)
