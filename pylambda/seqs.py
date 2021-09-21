@@ -9,7 +9,7 @@ def take(n, seq):
             return vals
     return vals
 
-def limit_seq(seq, limit):
+def limit_seq(limit, seq):
     '''allows you to set a hard limit on a sequence
     '''
     for i, val in enumerate(seq):

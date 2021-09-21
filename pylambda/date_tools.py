@@ -1,10 +1,9 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 from utils import comp
-import objtypes
 
 # ISO_8601 string formats
-iso_8601 = objtypes.objDict(
+iso_8601 = dict(
     MICROSECONDS='%Y-%m-%dT%H:%M:%S.%f',
     SECONDS='%Y-%m-%dT%H:%M:%S',
     MINUTES='%Y-%m-%dT%H:%M',
@@ -135,31 +134,31 @@ class fromIsoToDt(object):
 
     @staticmethod
     def from_microsecond(iso_dt):
-        return datetime.datetime.strptime(iso_dt, iso_8601.MICROSECONDS)
+        return datetime.datetime.strptime(iso_dt, iso_8601['MICROSECONDS'])
 
     @staticmethod
     def from_second(iso_dt):
-        return datetime.datetime.strptime(iso_dt, iso_8601.SECONDS)
+        return datetime.datetime.strptime(iso_dt, iso_8601['SECONDS'])
 
     @staticmethod
     def from_minute(iso_dt):
-        return datetime.datetime.strptime(iso_dt, iso_8601.MINUTES)
+        return datetime.datetime.strptime(iso_dt, iso_8601['MINUTES'])
 
     @staticmethod
     def from_hour(iso_dt):
-        return datetime.datetime.strptime(iso_dt, iso_8601.HOURS)
+        return datetime.datetime.strptime(iso_dt, iso_8601['HOURS'])
 
     @staticmethod
     def from_day(iso_dt):
-        return datetime.datetime.strptime(iso_dt, iso_8601.DAYS)
+        return datetime.datetime.strptime(iso_dt, iso_8601['DAYS'])
 
     @staticmethod
     def from_month(iso_dt):
-        return datetime.datetime.strptime(iso_dt, iso_8601.MONTHS)
+        return datetime.datetime.strptime(iso_dt, iso_8601['MONTHS'])
 
     @staticmethod
     def from_year(iso_dt):
-        return datetime.datetime.strptime(iso_dt, iso_8601.YEARS)
+        return datetime.datetime.strptime(iso_dt, iso_8601['YEARS'])
 
 class fromDtToIso(object):
     """a set of functions which take a datetime object
@@ -167,28 +166,28 @@ class fromDtToIso(object):
     """
     @staticmethod
     def to_microseconds(dt):
-        return dt.strftime(iso_8601.MICROSECONDS)
+        return dt.strftime(iso_8601['MICROSECONDS'])
 
     @staticmethod
     def to_seconds(dt):
-        return dt.strftime(iso_8601.SECONDS)
+        return dt.strftime(iso_8601['SECONDS'])
 
     @staticmethod
     def to_minutes(dt):
-        return dt.strftime(iso_8601.MINUTES)
+        return dt.strftime(iso_8601['MINUTES'])
 
     @staticmethod
     def to_hours(dt):
-        return dt.strftime(iso_8601.HOURS)
+        return dt.strftime(iso_8601['HOURS'])
 
     @staticmethod
     def to_days(dt):
-        return dt.strftime(iso_8601.DAYS)
+        return dt.strftime(iso_8601['DAYS'])
 
     @staticmethod
     def to_months(dt):
-        return dt.strftime(iso_8601.MONTHS)
+        return dt.strftime(iso_8601['MONTHS'])
 
     @staticmethod
     def to_years(dt):
-        return dt.strftime(iso_8601.YEARS)
+        return dt.strftime(iso_8601['YEARS'])
