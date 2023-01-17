@@ -1,3 +1,7 @@
+# 2.1.0_rc
+
+- some useful seqs functions coming from the analytics repo
+
 # 2.0.0
 
 - reconcile differences when bringing back changes to pylambda
