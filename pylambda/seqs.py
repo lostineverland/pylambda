@@ -25,12 +25,13 @@ def loop(val):
         yield val
 
 def nth(n, seq):
-    for i in range(n):
-        try:
-            val = next(seq)
-        except StopIteration:
-            return val
-    return val
+    N = n - 1
+    for i, x in enumerate(seq):
+        if i == N: break
+    if i < N:
+        return None
+    else:
+        return x
 
 def last(seq):
     for i in seq:
